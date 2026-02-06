@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-foreground) 12%, transparent);
+}
+
+/* Accessible focus ring baseline (works well with Tailwind's ring utilities). */
+:focus-visible {
+  outline: none;
+}
+
+/* Respect reduced motion globally. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
