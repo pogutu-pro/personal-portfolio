@@ -1,7 +1,12 @@
 import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
+import Script from "next/script"
 import "@/styles/globals.css"
+import "@/styles/mdx.css"
+import { Footer, Navbar } from "@/components/layout"
 import { SITE_CONFIG } from "@/lib/constants"
+import { RouteFocus } from "@/components/a11y/RouteFocus"
+import { generateJsonLd } from "@/lib/seo"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -61,10 +66,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const jsonLd = generateJsonLd()
+
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-        {children}
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-background focus:px-3 focus:py-2 focus:text-sm focus:shadow-lg focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        >
+          Skip to content
+        </a>
+        <RouteFocus />
+        <div className="min-h-dvh bg-background text-foreground">
+          <Navbar />
+          <main id="main-content" tabIndex={-1} className="outline-none">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   )

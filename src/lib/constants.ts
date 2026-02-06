@@ -11,11 +11,13 @@ export const SITE_CONFIG = {
   },
 } as const
 
+export const SECTION_IDS = ["hero", "work", "about", "lab", "contact"] as const
+
 export const NAVIGATION = [
-  { title: "Work", href: "/work" },
-  { title: "About", href: "/about" },
-  { title: "Lab", href: "/lab" },
-  { title: "Contact", href: "/contact" },
+  { title: "Work", href: "/#work" },
+  { title: "About", href: "/#about" },
+  { title: "Lab", href: "/#lab" },
+  { title: "Contact", href: "/#contact" },
 ] as const
 
 export const SOCIAL_LINKS = [

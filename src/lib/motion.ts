@@ -34,8 +34,3 @@ export const motionProps = {
   animate: "visible",
   transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
 } satisfies MotionProps
-
-export const shouldReduceMotion = () => {
-  if (typeof window === "undefined") return false
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
-}

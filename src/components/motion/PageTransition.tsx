@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion"
 import { fadeIn } from "@/lib/motion"
 
 interface PageTransitionProps {
@@ -8,14 +8,20 @@ interface PageTransitionProps {
 }
 
 export function PageTransition({ children }: PageTransitionProps) {
+  const reduceMotion = useReducedMotion()
+
+  if (reduceMotion) return <>{children}</>
+
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={fadeIn}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-    >
-      {children}
-    </motion.div>
+    <LazyMotion features={domAnimation}>
+      <m.div
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
+        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+      >
+        {children}
+      </m.div>
+    </LazyMotion>
   )
 }
