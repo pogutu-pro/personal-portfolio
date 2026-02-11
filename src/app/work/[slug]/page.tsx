@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Script from "next/script"
+import Link from "next/link"
 import { Container, Section } from "@/components/layout"
 import { Badge } from "@/components/ui"
 import { getProject, projects } from "@/features/projects/data"
@@ -46,12 +47,13 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
     }
   }
 
+  const description = project.description ?? project.impact
   return {
     title: `${project.title} | Case Study`,
-    description: project.description,
+    description,
     openGraph: {
       title: `${project.title} | ${SITE_CONFIG.name}`,
-      description: project.description,
+      description,
       type: "article",
     },
   }
@@ -79,12 +81,12 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <Container size="md">
           <Reveal>
             <div className="mb-8">
-              <a
-                href="/work"
+              <Link
+                href="/#work"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 ← Back to Work
-              </a>
+              </Link>
             </div>
           </Reveal>
 
@@ -100,14 +102,23 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
                 {project.title}
               </h1>
-              <p className="mt-4 text-lg text-muted-foreground md:text-xl">{project.description}</p>
+              <p className="mt-4 text-lg text-muted-foreground md:text-xl">
+                {project.description ?? project.impact}
+              </p>
               <div className="mt-6 flex flex-wrap gap-6 text-sm text-muted-foreground">
                 <div>
                   <span className="font-medium">Year:</span> {project.year}
                 </div>
-                <div>
-                  <span className="font-medium">Role:</span> {project.role}
-                </div>
+                {project.client && (
+                  <div>
+                    <span className="font-medium">Client:</span> {project.client}
+                  </div>
+                )}
+                {project.role && (
+                  <div>
+                    <span className="font-medium">Role:</span> {project.role}
+                  </div>
+                )}
               </div>
             </div>
           </Reveal>

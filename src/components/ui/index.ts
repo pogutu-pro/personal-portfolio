@@ -3,3 +3,6 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 export { Badge, badgeVariants } from "./Badge"
 export { Link } from "./Link"
 export { Slot } from "./Slot"
+export { ThemeToggle } from "./ThemeToggle"
+export { FeatureCard } from "./FeatureCard"
+export { InfiniteCarousel } from "./InfiniteCarousel"

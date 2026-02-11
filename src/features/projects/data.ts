@@ -1,90 +1,98 @@
 export interface Project {
+  id: string
   slug: string
   title: string
-  description: string
-  excerpt: string
-  year: number
-  role: string
+  subtitle: string
+  description?: string
+  excerpt?: string
+  impact: string
+  client: string
+  year: string
+  role?: string
   tags: string[]
+  thumbnail: string
+  stats?: { label: string; value: string }[]
   featured: boolean
-  image?: string
-  externalUrl?: string
   caseStudy?: boolean
+  externalUrl?: string
 }
 
 export const projects: Project[] = [
   {
-    slug: "premium-saas-platform",
-    title: "Premium SaaS Platform",
-    description:
-      "Built a modern SaaS platform with real-time collaboration, advanced analytics, and seamless payment integration. Focused on performance, accessibility, and user experience.",
-    excerpt:
-      "A comprehensive SaaS platform featuring real-time collaboration, analytics, and payment processing.",
-    year: 2024,
-    role: "Principal Frontend Engineer",
-    tags: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Stripe"],
+    id: "rumia",
+    slug: "rumia-rental-ops",
+    title: "Rumia Technologies",
+    subtitle: "SaaS / Operational Software",
+    impact: "Architected and deployed a multi-tenant rental operations platform currently managing tenant workflows and payment orchestration.",
+    client: "Rumia Technologies Ltd",
+    year: "2024",
+    role: "Co-Founder & CEO",
+    tags: ["React", "FastAPI", "PostgreSQL", "Design Systems", "Payments"],
+    thumbnail: "/projects/rumia.png",
+    featured: true,
+    caseStudy: true,
+    stats: [
+      { label: "Architecture", value: "Multi-tenant" },
+      { label: "Workflows", value: "Automated" },
+      { label: "Uptime", value: "99.9%" },
+    ],
+  },
+  {
+    id: "cli-tools",
+    slug: "cli-system-automation",
+    title: "CLI System Automation",
+    subtitle: "Systems Engineering / Python",
+    impact: "Developed high-performance CLI tools for directory analysis and automated backup systems, optimizing local developer workflows.",
+    client: "Open Source / Internal",
+    year: "2023",
+    role: "Lead Engineer",
+    tags: ["Python", "Linux CLI", "Automation", "Systems"],
+    thumbnail: "/projects/cli.png",
+    featured: true,
+    stats: [
+      { label: "Language", value: "Python" },
+      { label: "Efficiency", value: "+40%" },
+    ],
+  },
+  {
+    id: "ai-api",
+    slug: "ai-task-automation-api",
+    title: "AI Task Automation API",
+    subtitle: "Backend / AI Orchestration",
+    impact: "Engineered a robust backend system for managing AI-powered task queuing and result storage with proper job tracking.",
+    client: "Startup Client",
+    year: "2024",
+    role: "Backend Architect",
+    tags: ["FastAPI", "Job Queuing", "AI Implementation", "API Design"],
+    thumbnail: "/projects/ai-api.png",
     featured: true,
     caseStudy: true,
   },
   {
-    slug: "design-system-library",
-    title: "Design System Library",
-    description:
-      "Created a comprehensive design system library with 50+ reusable components, documentation, and Storybook integration. Used by 20+ teams across the organization.",
-    excerpt: "A production-ready design system with 50+ components and full documentation.",
-    year: 2024,
-    role: "Frontend Architect",
-    tags: ["React", "TypeScript", "Storybook", "Design Systems"],
+    id: "aqua",
+    slug: "aqua-chatbot",
+    title: "Aqua Chatbot",
+    subtitle: "Product / AI Agent",
+    impact: "Built an intelligent conversational agent focused on reducing customer support friction and improving response latency.",
+    client: "Proprietary",
+    year: "2023",
+    role: "Lead Developer",
+    tags: ["React", "NLP", "API Integration"],
+    thumbnail: "/projects/aqua.png",
+    featured: false,
+  },
+  {
+    id: "omniscient",
+    slug: "omniscient-automation",
+    title: "Omniscient Agent",
+    subtitle: "Automation / Intelligence",
+    impact: "Designed an automation agent framework for orchestrating complex cross-platform workflows.",
+    client: "Internal Lab",
+    year: "2024",
+    role: "Researcher & Dev",
+    tags: ["Automation", "Node.js", "Workflow Design"],
+    thumbnail: "/projects/omniscient.png",
     featured: true,
-    caseStudy: true,
-  },
-  {
-    slug: "e-commerce-platform",
-    title: "E-Commerce Platform",
-    description:
-      "Developed a high-performance e-commerce platform with advanced search, filtering, and checkout flow. Achieved 95+ Lighthouse scores and sub-2s LCP.",
-    excerpt: "High-performance e-commerce platform with advanced search and checkout.",
-    year: 2023,
-    role: "Senior Frontend Engineer",
-    tags: ["Next.js", "React", "TypeScript", "Performance"],
-    featured: true,
-    caseStudy: false,
-  },
-  {
-    slug: "analytics-dashboard",
-    title: "Analytics Dashboard",
-    description:
-      "Built a real-time analytics dashboard with interactive charts, data visualization, and export capabilities. Handles millions of data points efficiently.",
-    excerpt: "Real-time analytics dashboard with interactive visualizations.",
-    year: 2023,
-    role: "Frontend Engineer",
-    tags: ["React", "D3.js", "TypeScript", "Data Visualization"],
-    featured: false,
-    caseStudy: false,
-  },
-  {
-    slug: "mobile-app-redesign",
-    title: "Mobile App Redesign",
-    description:
-      "Led the redesign of a mobile-first web application, improving conversion rates by 40% and reducing bounce rate by 25%.",
-    excerpt: "Mobile-first redesign that improved conversion rates by 40%.",
-    year: 2023,
-    role: "Lead Frontend Engineer",
-    tags: ["React", "Mobile", "UX", "Performance"],
-    featured: false,
-    caseStudy: false,
-  },
-  {
-    slug: "developer-tools",
-    title: "Developer Tools Suite",
-    description:
-      "Created a suite of developer tools including CLI, VS Code extension, and web dashboard. Used by thousands of developers daily.",
-    excerpt: "Developer tools suite including CLI, VS Code extension, and dashboard.",
-    year: 2022,
-    role: "Full-Stack Engineer",
-    tags: ["TypeScript", "Node.js", "VS Code", "CLI"],
-    featured: false,
-    caseStudy: false,
   },
 ]
 

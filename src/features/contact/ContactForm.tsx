@@ -5,152 +5,82 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui"
 import { contactFormSchema, type ContactFormData } from "./validation"
-import { Reveal } from "@/components/motion"
+import { Send } from "lucide-react"
+
+const inputClass =
+  "w-full rounded-xl bg-muted border border-border px-4 py-3 text-foreground placeholder-muted-foreground focus:border-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] transition-colors"
 
 export function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<ContactFormData>({
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
   })
 
   const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true)
-    setSubmitStatus("idle")
-
+    setSubmitStatus("submitting")
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-
-      if (!response.ok) {
-        throw new Error("Failed to send message")
-      }
-
+      const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
+      if (!res.ok) throw new Error()
       setSubmitStatus("success")
       reset()
-    } catch (error) {
+    } catch {
       setSubmitStatus("error")
-    } finally {
-      setIsSubmitting(false)
     }
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <Reveal>
+      <div>
+        <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">Your Name *</label>
+        <input id="name" type="text" placeholder="John Kamau" {...register("name")} className={inputClass} aria-invalid={!!errors.name} />
+        {errors.name && <p className="mt-1 text-sm text-red-400" role="alert">{errors.name.message}</p>}
+      </div>
+      <div>
+        <label htmlFor="email" className="mb-2 block text-sm font-medium text-white">Email Address *</label>
+        <input id="email" type="email" placeholder="john@company.com" {...register("email")} className={inputClass} aria-invalid={!!errors.email} />
+        {errors.email && <p className="mt-1 text-sm text-red-400" role="alert">{errors.email.message}</p>}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="name" className="mb-2 block text-sm font-medium">
-            Name <span className="text-destructive">*</span>
-          </label>
-          <input
-            id="name"
-            type="text"
-            {...register("name")}
-            className="w-full rounded-lg border border-input bg-background px-4 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            aria-invalid={errors.name ? "true" : "false"}
-            aria-describedby={errors.name ? "name-error" : undefined}
-          />
-          {errors.name && (
-            <p id="name-error" className="mt-1 text-sm text-destructive" role="alert">
-              {errors.name.message}
-            </p>
-          )}
+          <label htmlFor="projectType" className="mb-2 block text-sm font-medium text-white">Project Type</label>
+          <select id="projectType" {...register("projectType")} className={inputClass}>
+            <option value="">Select...</option>
+            <option value="web-app">Web Application</option>
+            <option value="mobile-app">Mobile App</option>
+            <option value="ecommerce">E-Commerce</option>
+            <option value="dashboard">Dashboard/Analytics</option>
+            <option value="api">API Development</option>
+            <option value="consulting">Consulting</option>
+            <option value="other">Other</option>
+          </select>
         </div>
-      </Reveal>
-
-      <Reveal delay={0.1}>
         <div>
-          <label htmlFor="email" className="mb-2 block text-sm font-medium">
-            Email <span className="text-destructive">*</span>
-          </label>
-          <input
-            id="email"
-            type="email"
-            {...register("email")}
-            className="w-full rounded-lg border border-input bg-background px-4 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            aria-invalid={errors.email ? "true" : "false"}
-            aria-describedby={errors.email ? "email-error" : undefined}
-          />
-          {errors.email && (
-            <p id="email-error" className="mt-1 text-sm text-destructive" role="alert">
-              {errors.email.message}
-            </p>
-          )}
+          <label htmlFor="budget" className="mb-2 block text-sm font-medium text-white">Budget Range</label>
+          <select id="budget" {...register("budget")} className={inputClass}>
+            <option value="">Select...</option>
+            <option value="under-5k">Under $5K</option>
+            <option value="5k-10k">$5K - $10K</option>
+            <option value="10k-25k">$10K - $25K</option>
+            <option value="25k-plus">$25K+</option>
+            <option value="flexible">Flexible</option>
+          </select>
         </div>
-      </Reveal>
-
-      <Reveal delay={0.2}>
-        <div>
-          <label htmlFor="subject" className="mb-2 block text-sm font-medium">
-            Subject <span className="text-destructive">*</span>
-          </label>
-          <input
-            id="subject"
-            type="text"
-            {...register("subject")}
-            className="w-full rounded-lg border border-input bg-background px-4 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            aria-invalid={errors.subject ? "true" : "false"}
-            aria-describedby={errors.subject ? "subject-error" : undefined}
-          />
-          {errors.subject && (
-            <p id="subject-error" className="mt-1 text-sm text-destructive" role="alert">
-              {errors.subject.message}
-            </p>
-          )}
-        </div>
-      </Reveal>
-
-      <Reveal delay={0.3}>
-        <div>
-          <label htmlFor="message" className="mb-2 block text-sm font-medium">
-            Message <span className="text-destructive">*</span>
-          </label>
-          <textarea
-            id="message"
-            rows={8}
-            {...register("message")}
-            className="w-full rounded-lg border border-input bg-background px-4 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            aria-invalid={errors.message ? "true" : "false"}
-            aria-describedby={errors.message ? "message-error" : undefined}
-          />
-          {errors.message && (
-            <p id="message-error" className="mt-1 text-sm text-destructive" role="alert">
-              {errors.message.message}
-            </p>
-          )}
-        </div>
-      </Reveal>
-
-      <Reveal delay={0.4}>
-        <div>
-          <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:w-auto">
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </Button>
-
-          {submitStatus === "success" && (
-            <p className="mt-4 text-sm text-green-600 dark:text-green-400" role="alert">
-              Message sent successfully! I&apos;ll get back to you soon.
-            </p>
-          )}
-
-          {submitStatus === "error" && (
-            <p className="mt-4 text-sm text-destructive" role="alert">
-              Failed to send message. Please try again or email me directly.
-            </p>
-          )}
-        </div>
-      </Reveal>
+      </div>
+      <div>
+        <label htmlFor="timeline" className="mb-2 block text-sm font-medium text-white">Desired Timeline</label>
+        <input id="timeline" type="text" placeholder="e.g., ASAP, 3 months" {...register("timeline")} className={inputClass} />
+      </div>
+      <div>
+        <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">Project Details *</label>
+        <textarea id="message" rows={5} placeholder="Tell me about your project..." {...register("message")} className={inputClass + " resize-none"} aria-invalid={!!errors.message} />
+        {errors.message && <p className="mt-1 text-sm text-red-400" role="alert">{errors.message.message}</p>}
+      </div>
+      <Button type="submit" variant="primary" size="lg" className="w-full inline-flex items-center justify-center gap-2" disabled={submitStatus === "submitting"}>
+        {submitStatus === "submitting" ? "Sending..." : "Send Message"}
+        <Send className="w-4 h-4" />
+      </Button>
+      {submitStatus === "success" && <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm" role="alert">✓ Message sent! I&apos;ll get back to you within 24 hours.</div>}
+      {submitStatus === "error" && <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm" role="alert">✗ Something went wrong. Please try emailing me directly.</div>}
     </form>
   )
 }

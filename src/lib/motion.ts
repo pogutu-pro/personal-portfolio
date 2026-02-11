@@ -1,4 +1,5 @@
-import { motion, type MotionProps, type Variants } from "framer-motion"
+import { type MotionProps, type Variants } from "framer-motion"
+
 
 export const fadeIn: Variants = {
   hidden: { opacity: 0 },

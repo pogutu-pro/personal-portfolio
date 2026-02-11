@@ -1,0 +1,457 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - link [ref=e7] [cursor=pointer]:
+          - /url: /
+        - navigation [ref=e12]:
+          - link "Philosophy" [ref=e13] [cursor=pointer]:
+            - /url: /#about
+          - link "Engineering" [ref=e14] [cursor=pointer]:
+            - /url: /#work
+          - link "Strategy" [ref=e15] [cursor=pointer]:
+            - /url: /#services
+          - link "Collaborate" [ref=e16] [cursor=pointer]:
+            - /url: /#contact
+        - link "Collaborate" [ref=e18] [cursor=pointer]:
+          - /url: /#contact
+    - main [active] [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - generic [ref=e27]: Product Engineer & Startup Founder
+            - heading "Engineering Production Systems." [level=1] [ref=e28]:
+              - text: Engineering
+              - text: Production
+              - text: Systems.
+            - paragraph [ref=e29]: A product-focused software engineer and startup founder specializing in building scalable web applications and operational systems. My work focuses on real-world execution — designing, engineering, and deploying production-ready software that powers payments, workflows, and business operations.
+            - generic [ref=e30]:
+              - link "Collaborate" [ref=e31] [cursor=pointer]:
+                - /url: /#contact
+                - text: Collaborate
+                - img [ref=e32]
+              - link "Deployments" [ref=e35] [cursor=pointer]:
+                - /url: /#work
+          - generic [ref=e36]:
+            - img "Paul Ogutu" [ref=e38]
+            - generic [ref=e39]: Principal Engineer
+        - button "Scroll to about section" [ref=e40] [cursor=pointer]:
+          - generic [ref=e41]: Initialize
+          - img [ref=e43]
+      - generic [ref=e46]:
+        - img "Logo" [ref=e48]
+        - img "Ogutu" [ref=e50]
+        - img "Paul Ogutu" [ref=e52]
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e57]: Education
+            - generic [ref=e58]:
+              - generic [ref=e62]:
+                - heading "Homabay School — High School (A-)" [level=3] [ref=e63]
+                - paragraph [ref=e64]: Built discipline, independence, and strong analytical and problem-solving foundations. Graduated with a strong academic record, achieving an **A- grade**.
+              - generic [ref=e67]:
+                - heading "Dedan Kimathi University — BSc CS" [level=3] [ref=e68]
+                - paragraph [ref=e69]: Training in software engineering, algorithms, data structures, networking, and systems design, applied through practical projects and collaborative research.
+              - generic [ref=e72]:
+                - heading "Self-Education" [level=3] [ref=e73]
+                - paragraph [ref=e74]: "Independent Learning — Focused on modern technical architectures and startup execution through hands-on building:"
+                - generic [ref=e75]:
+                  - generic [ref=e76]: React
+                  - generic [ref=e77]: Modern Frontend
+                  - generic [ref=e78]: Tailwind CSS
+                  - generic [ref=e79]: REST APIs
+                  - generic [ref=e80]: FastAPI
+                  - generic [ref=e81]: Django
+                  - generic [ref=e82]: Python
+                  - generic [ref=e83]: Linux/CLI
+                  - generic [ref=e84]: Git
+                  - generic [ref=e85]: Deployment
+                  - generic [ref=e86]: SEO
+                  - generic [ref=e87]: Design Systems
+                  - generic [ref=e88]: Startup Execution
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - generic [ref=e91]:
+                - img [ref=e93]
+                - heading "Build assets, not demos" [level=4] [ref=e97]
+              - paragraph [ref=e98]: Every line of code should contribute to a working system that provides real-world value.
+            - generic [ref=e99]:
+              - generic [ref=e100]:
+                - img [ref=e102]
+                - heading "Ship working systems" [level=4] [ref=e104]
+              - paragraph [ref=e105]: Prioritizing production readiness over slides or prototypes.
+            - generic [ref=e106]:
+              - generic [ref=e107]:
+                - img [ref=e109]
+                - heading "Simplicity beats complexity" [level=4] [ref=e113]
+              - paragraph [ref=e114]: Engineering for maintainability and ownership.
+            - generic [ref=e115]:
+              - generic [ref=e116]:
+                - img [ref=e118]
+                - heading "Master problems, not tools" [level=4] [ref=e121]
+              - paragraph [ref=e122]: Using technology as a lever to solve business constraints.
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - generic [ref=e126]: Core Competencies
+          - heading "Full-Stack Technical Proficiency" [level=2] [ref=e127]
+        - generic [ref=e128]:
+          - generic [ref=e131]:
+            - heading "Frontend Engineering" [level=3] [ref=e132]
+            - paragraph [ref=e133]: Developing high-performance, accessible web interfaces using the React ecosystem and modern design systems.
+            - generic [ref=e134]:
+              - generic [ref=e135]: React (Next.js/Vite)
+              - generic [ref=e136]: Tailwind CSS (Design Systems)
+              - generic [ref=e137]: Three.js (WebGL)
+              - generic [ref=e138]: Zustand & React Query
+              - generic [ref=e139]: Performance Optimization (LCP/CLS)
+              - generic [ref=e140]: Accessibility (WCAG)
+          - generic [ref=e143]:
+            - heading "Backend Engineering" [level=3] [ref=e144]
+            - paragraph [ref=e145]: Architecting scalable APIs and business logic workflows with FastAPI, Django, and PostgreSQL.
+            - generic [ref=e146]:
+              - generic [ref=e147]: FastAPI & Django
+              - generic [ref=e148]: PostgreSQL (Query Optimization)
+              - generic [ref=e149]: RESTful API Design
+              - generic [ref=e150]: Authentication & Workflow Logic
+              - generic [ref=e151]: Business Logic Modeling
+          - generic [ref=e154]:
+            - heading "Mobile Development" [level=3] [ref=e155]
+            - paragraph [ref=e156]: Engineering premium mobile experiences using React Native and the Expo ecosystem for iOS and Android.
+            - generic [ref=e157]:
+              - generic [ref=e158]: React Native
+              - generic [ref=e159]: Expo SDK
+              - generic [ref=e160]: Native Modules
+              - generic [ref=e161]: Store Deployment (App/Play Store)
+              - generic [ref=e162]: Mobile UI/UX Patterns
+          - generic [ref=e165]:
+            - heading "Product Strategy" [level=3] [ref=e166]
+            - paragraph [ref=e167]: Bridging the gap between engineering and business through MVP-first thinking.
+            - generic [ref=e168]:
+              - generic [ref=e169]: Linux CLI & Bash Scripting
+              - generic [ref=e170]: Git & Collaborative Workflows
+              - generic [ref=e171]: Docker
+              - generic [ref=e172]: AWS
+              - generic [ref=e173]: API Testing & Documentation
+              - generic [ref=e174]: MVP-first Product Thinking
+      - generic [ref=e175]:
+        - generic [ref=e178]:
+          - generic [ref=e180]: Capabilities
+          - heading "High-Performance Execution." [level=2] [ref=e181]:
+            - text: High-Performance
+            - text: Execution.
+        - generic [ref=e183]:
+          - generic [ref=e187]:
+            - generic [ref=e189]: Philosophy
+            - heading "Ownership First" [level=3] [ref=e190]
+            - paragraph [ref=e191]: Deep commitment to product outcomes and technical maintainability.
+          - generic [ref=e195]:
+            - generic [ref=e197]: Execution
+            - heading "Scalable Ops" [level=3] [ref=e198]
+            - paragraph [ref=e199]: Building multi-tenant systems handling complex real-world workflows.
+          - generic [ref=e203]:
+            - generic [ref=e205]: Optimization
+            - heading "Production Latency" [level=3] [ref=e206]
+            - paragraph [ref=e207]: Focusing on Core Web Vitals and backend speed for best-in-class CX.
+          - generic [ref=e211]:
+            - generic [ref=e213]: Backend
+            - heading "FastAPI Expert" [level=3] [ref=e214]
+            - paragraph [ref=e215]: Architecting high-concurrency APIs with Python and async patterns.
+          - generic [ref=e219]:
+            - generic [ref=e221]: Philosophy
+            - heading "Ownership First" [level=3] [ref=e222]
+            - paragraph [ref=e223]: Deep commitment to product outcomes and technical maintainability.
+          - generic [ref=e227]:
+            - generic [ref=e229]: Execution
+            - heading "Scalable Ops" [level=3] [ref=e230]
+            - paragraph [ref=e231]: Building multi-tenant systems handling complex real-world workflows.
+          - generic [ref=e235]:
+            - generic [ref=e237]: Optimization
+            - heading "Production Latency" [level=3] [ref=e238]
+            - paragraph [ref=e239]: Focusing on Core Web Vitals and backend speed for best-in-class CX.
+          - generic [ref=e243]:
+            - generic [ref=e245]: Backend
+            - heading "FastAPI Expert" [level=3] [ref=e246]
+            - paragraph [ref=e247]: Architecting high-concurrency APIs with Python and async patterns.
+          - generic [ref=e251]:
+            - generic [ref=e253]: Philosophy
+            - heading "Ownership First" [level=3] [ref=e254]
+            - paragraph [ref=e255]: Deep commitment to product outcomes and technical maintainability.
+          - generic [ref=e259]:
+            - generic [ref=e261]: Execution
+            - heading "Scalable Ops" [level=3] [ref=e262]
+            - paragraph [ref=e263]: Building multi-tenant systems handling complex real-world workflows.
+          - generic [ref=e267]:
+            - generic [ref=e269]: Optimization
+            - heading "Production Latency" [level=3] [ref=e270]
+            - paragraph [ref=e271]: Focusing on Core Web Vitals and backend speed for best-in-class CX.
+          - generic [ref=e275]:
+            - generic [ref=e277]: Backend
+            - heading "FastAPI Expert" [level=3] [ref=e278]
+            - paragraph [ref=e279]: Architecting high-concurrency APIs with Python and async patterns.
+      - generic [ref=e282]:
+        - generic [ref=e283]:
+          - generic [ref=e284]: Selected Projects
+          - heading "Engineering Assets" [level=2] [ref=e285]
+        - generic [ref=e286]:
+          - generic [ref=e288]: Internal Systems
+          - heading "Strategic Infrastructure." [level=2] [ref=e289]:
+            - text: Strategic
+            - text: Infrastructure.
+        - generic [ref=e292]:
+          - link "Rumia Technologies SaaS / Operational Software Rumia Technologies Architected and deployed a multi-tenant rental operations platform currently managing tenant workflows and payment orchestration. React FastAPI PostgreSQL Design Systems Payments" [ref=e296] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "Rumia Technologies" [ref=e298]
+            - generic [ref=e302]:
+              - generic [ref=e303]:
+                - generic [ref=e304]: SaaS / Operational Software
+                - img
+              - heading "Rumia Technologies" [level=3] [ref=e305]
+              - paragraph [ref=e306]: Architected and deployed a multi-tenant rental operations platform currently managing tenant workflows and payment orchestration.
+              - generic [ref=e307]:
+                - generic [ref=e308]: React
+                - generic [ref=e309]: FastAPI
+                - generic [ref=e310]: PostgreSQL
+                - generic [ref=e311]: Design Systems
+                - generic [ref=e312]: Payments
+          - link "CLI System Automation Systems Engineering / Python CLI System Automation Developed high-performance CLI tools for directory analysis and automated backup systems, optimizing local developer workflows. Python Linux CLI Automation Systems" [ref=e316] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "CLI System Automation" [ref=e318]
+            - generic [ref=e322]:
+              - generic [ref=e323]:
+                - generic [ref=e324]: Systems Engineering / Python
+                - img
+              - heading "CLI System Automation" [level=3] [ref=e325]
+              - paragraph [ref=e326]: Developed high-performance CLI tools for directory analysis and automated backup systems, optimizing local developer workflows.
+              - generic [ref=e327]:
+                - generic [ref=e328]: Python
+                - generic [ref=e329]: Linux CLI
+                - generic [ref=e330]: Automation
+                - generic [ref=e331]: Systems
+          - link "AI Task Automation API Backend / AI Orchestration AI Task Automation API Engineered a robust backend system for managing AI-powered task queuing and result storage with proper job tracking. FastAPI Job Queuing AI Implementation API Design" [ref=e335] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "AI Task Automation API" [ref=e337]
+            - generic [ref=e341]:
+              - generic [ref=e342]:
+                - generic [ref=e343]: Backend / AI Orchestration
+                - img [ref=e344]
+              - heading "AI Task Automation API" [level=3] [ref=e347]
+              - paragraph [ref=e348]: Engineered a robust backend system for managing AI-powered task queuing and result storage with proper job tracking.
+              - generic [ref=e349]:
+                - generic [ref=e350]: FastAPI
+                - generic [ref=e351]: Job Queuing
+                - generic [ref=e352]: AI Implementation
+                - generic [ref=e353]: API Design
+          - link "Omniscient Agent Automation / Intelligence Omniscient Agent Designed an automation agent framework for orchestrating complex cross-platform workflows. Automation Node.js Workflow Design" [ref=e357] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "Omniscient Agent" [ref=e359]
+            - generic [ref=e363]:
+              - generic [ref=e364]:
+                - generic [ref=e365]: Automation / Intelligence
+                - img [ref=e366]
+              - heading "Omniscient Agent" [level=3] [ref=e369]
+              - paragraph [ref=e370]: Designed an automation agent framework for orchestrating complex cross-platform workflows.
+              - generic [ref=e371]:
+                - generic [ref=e372]: Automation
+                - generic [ref=e373]: Node.js
+                - generic [ref=e374]: Workflow Design
+          - link "Rumia Technologies SaaS / Operational Software Rumia Technologies Architected and deployed a multi-tenant rental operations platform currently managing tenant workflows and payment orchestration. React FastAPI PostgreSQL Design Systems Payments" [ref=e378] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "Rumia Technologies" [ref=e380]
+            - generic [ref=e384]:
+              - generic [ref=e385]:
+                - generic [ref=e386]: SaaS / Operational Software
+                - img
+              - heading "Rumia Technologies" [level=3] [ref=e387]
+              - paragraph [ref=e388]: Architected and deployed a multi-tenant rental operations platform currently managing tenant workflows and payment orchestration.
+              - generic [ref=e389]:
+                - generic [ref=e390]: React
+                - generic [ref=e391]: FastAPI
+                - generic [ref=e392]: PostgreSQL
+                - generic [ref=e393]: Design Systems
+                - generic [ref=e394]: Payments
+          - link "CLI System Automation Systems Engineering / Python CLI System Automation Developed high-performance CLI tools for directory analysis and automated backup systems, optimizing local developer workflows. Python Linux CLI Automation Systems" [ref=e398] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "CLI System Automation" [ref=e400]
+            - generic [ref=e404]:
+              - generic [ref=e405]:
+                - generic [ref=e406]: Systems Engineering / Python
+                - img
+              - heading "CLI System Automation" [level=3] [ref=e407]
+              - paragraph [ref=e408]: Developed high-performance CLI tools for directory analysis and automated backup systems, optimizing local developer workflows.
+              - generic [ref=e409]:
+                - generic [ref=e410]: Python
+                - generic [ref=e411]: Linux CLI
+                - generic [ref=e412]: Automation
+                - generic [ref=e413]: Systems
+          - link "AI Task Automation API Backend / AI Orchestration AI Task Automation API Engineered a robust backend system for managing AI-powered task queuing and result storage with proper job tracking. FastAPI Job Queuing AI Implementation API Design" [ref=e417] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "AI Task Automation API" [ref=e419]
+            - generic [ref=e423]:
+              - generic [ref=e424]:
+                - generic [ref=e425]: Backend / AI Orchestration
+                - img [ref=e426]
+              - heading "AI Task Automation API" [level=3] [ref=e429]
+              - paragraph [ref=e430]: Engineered a robust backend system for managing AI-powered task queuing and result storage with proper job tracking.
+              - generic [ref=e431]:
+                - generic [ref=e432]: FastAPI
+                - generic [ref=e433]: Job Queuing
+                - generic [ref=e434]: AI Implementation
+                - generic [ref=e435]: API Design
+          - link "Omniscient Agent Automation / Intelligence Omniscient Agent Designed an automation agent framework for orchestrating complex cross-platform workflows. Automation Node.js Workflow Design" [ref=e439] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "Omniscient Agent" [ref=e441]
+            - generic [ref=e445]:
+              - generic [ref=e446]:
+                - generic [ref=e447]: Automation / Intelligence
+                - img [ref=e448]
+              - heading "Omniscient Agent" [level=3] [ref=e451]
+              - paragraph [ref=e452]: Designed an automation agent framework for orchestrating complex cross-platform workflows.
+              - generic [ref=e453]:
+                - generic [ref=e454]: Automation
+                - generic [ref=e455]: Node.js
+                - generic [ref=e456]: Workflow Design
+          - link "Rumia Technologies SaaS / Operational Software Rumia Technologies Architected and deployed a multi-tenant rental operations platform currently managing tenant workflows and payment orchestration. React FastAPI PostgreSQL Design Systems Payments" [ref=e460] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "Rumia Technologies" [ref=e462]
+            - generic [ref=e466]:
+              - generic [ref=e467]:
+                - generic [ref=e468]: SaaS / Operational Software
+                - img
+              - heading "Rumia Technologies" [level=3] [ref=e469]
+              - paragraph [ref=e470]: Architected and deployed a multi-tenant rental operations platform currently managing tenant workflows and payment orchestration.
+              - generic [ref=e471]:
+                - generic [ref=e472]: React
+                - generic [ref=e473]: FastAPI
+                - generic [ref=e474]: PostgreSQL
+                - generic [ref=e475]: Design Systems
+                - generic [ref=e476]: Payments
+          - link "CLI System Automation Systems Engineering / Python CLI System Automation Developed high-performance CLI tools for directory analysis and automated backup systems, optimizing local developer workflows. Python Linux CLI Automation Systems" [ref=e480] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "CLI System Automation" [ref=e482]
+            - generic [ref=e486]:
+              - generic [ref=e487]:
+                - generic [ref=e488]: Systems Engineering / Python
+                - img
+              - heading "CLI System Automation" [level=3] [ref=e489]
+              - paragraph [ref=e490]: Developed high-performance CLI tools for directory analysis and automated backup systems, optimizing local developer workflows.
+              - generic [ref=e491]:
+                - generic [ref=e492]: Python
+                - generic [ref=e493]: Linux CLI
+                - generic [ref=e494]: Automation
+                - generic [ref=e495]: Systems
+          - link "AI Task Automation API Backend / AI Orchestration AI Task Automation API Engineered a robust backend system for managing AI-powered task queuing and result storage with proper job tracking. FastAPI Job Queuing AI Implementation API Design" [ref=e499] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "AI Task Automation API" [ref=e501]
+            - generic [ref=e505]:
+              - generic [ref=e506]:
+                - generic [ref=e507]: Backend / AI Orchestration
+                - img [ref=e508]
+              - heading "AI Task Automation API" [level=3] [ref=e511]
+              - paragraph [ref=e512]: Engineered a robust backend system for managing AI-powered task queuing and result storage with proper job tracking.
+              - generic [ref=e513]:
+                - generic [ref=e514]: FastAPI
+                - generic [ref=e515]: Job Queuing
+                - generic [ref=e516]: AI Implementation
+                - generic [ref=e517]: API Design
+          - link "Omniscient Agent Automation / Intelligence Omniscient Agent Designed an automation agent framework for orchestrating complex cross-platform workflows. Automation Node.js Workflow Design" [ref=e521] [cursor=pointer]:
+            - /url: https://github.com/pogutu-pro
+            - img "Omniscient Agent" [ref=e523]
+            - generic [ref=e527]:
+              - generic [ref=e528]:
+                - generic [ref=e529]: Automation / Intelligence
+                - img [ref=e530]
+              - heading "Omniscient Agent" [level=3] [ref=e533]
+              - paragraph [ref=e534]: Designed an automation agent framework for orchestrating complex cross-platform workflows.
+              - generic [ref=e535]:
+                - generic [ref=e536]: Automation
+                - generic [ref=e537]: Node.js
+                - generic [ref=e538]: Workflow Design
+        - link "Engineering Logs" [ref=e540] [cursor=pointer]:
+          - /url: https://github.com/pogutu-pro
+          - text: Engineering Logs
+          - img [ref=e541]
+      - generic [ref=e547]:
+        - generic [ref=e548]:
+          - heading "Thinking of Something Big." [level=2] [ref=e549]:
+            - text: Thinking of
+            - generic [ref=e550]:
+              - text: Something
+              - text: Big.
+          - paragraph [ref=e551]:
+            - text: Currently open for strategic infrastructure projects
+            - text: and full-stack engineering partnerships.
+        - generic [ref=e552]:
+          - link "Email Me pogutu010@gmail.com" [ref=e554] [cursor=pointer]:
+            - /url: mailto:pogutu010@gmail.com
+            - generic [ref=e555]: Email Me
+            - generic [ref=e556]:
+              - generic [ref=e557]: pogutu010@gmail.com
+              - img [ref=e558]
+          - link "LinkedIn Profile Professional Profile" [ref=e562] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/paul-ogutu
+            - generic [ref=e563]: LinkedIn Profile
+            - generic [ref=e564]:
+              - generic [ref=e565]: Professional Profile
+              - img [ref=e566]
+        - generic [ref=e569]: Paul Ogutu — 2026
+    - contentinfo [ref=e570]:
+      - generic [ref=e571]:
+        - generic [ref=e572]:
+          - generic [ref=e573]:
+            - heading "Paul Ogutu Odhiambo" [level=3] [ref=e574]
+            - paragraph [ref=e575]: Product-focused software engineer specializing in high-performance operational systems and scalable web infrastructure.
+          - generic [ref=e576]:
+            - heading "Navigation" [level=4] [ref=e577]
+            - list [ref=e578]:
+              - listitem [ref=e579]:
+                - link "Work" [ref=e580] [cursor=pointer]:
+                  - /url: /#work
+              - listitem [ref=e581]:
+                - link "About" [ref=e582] [cursor=pointer]:
+                  - /url: /#about
+              - listitem [ref=e583]:
+                - link "Services" [ref=e584] [cursor=pointer]:
+                  - /url: /#services
+              - listitem [ref=e585]:
+                - link "Laboratory" [ref=e586] [cursor=pointer]:
+                  - /url: /#laboratory
+              - listitem [ref=e587]:
+                - link "Contact" [ref=e588] [cursor=pointer]:
+                  - /url: /#contact
+          - generic [ref=e589]:
+            - heading "Competencies" [level=4] [ref=e590]
+            - list [ref=e591]:
+              - listitem [ref=e592]: Next.js / React
+              - listitem [ref=e593]: FastAPI / Python
+              - listitem [ref=e594]: PostgreSQL
+              - listitem [ref=e595]: Systems Engineering
+          - generic [ref=e596]:
+            - heading "Intelligence" [level=4] [ref=e597]
+            - generic [ref=e598]:
+              - link "Github" [ref=e599] [cursor=pointer]:
+                - /url: https://github.com/pogutu-pro
+                - img [ref=e600]
+              - link "LinkedIn" [ref=e603] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/paul-ogutu
+                - img [ref=e604]
+              - link "Email" [ref=e608] [cursor=pointer]:
+                - /url: mailto:pogutu010@gmail.com
+                - img [ref=e609]
+            - generic [ref=e612]:
+              - textbox "ENTER EMAIL FOR UPDATES" [ref=e614]
+              - button "JOIN LOGS" [ref=e615]
+        - generic [ref=e616]:
+          - paragraph [ref=e618]: © 2026 Paul Ogutu Odhiambo / PRODUCTION GRADE
+          - generic [ref=e619]:
+            - link "SOURCE LOGS ↗" [ref=e620] [cursor=pointer]:
+              - /url: https://github.com/pogutu
+            - paragraph [ref=e621]: "UPDATED: FEB 2026"
+  - button "Open Next.js Dev Tools" [ref=e627] [cursor=pointer]:
+    - img [ref=e628]
+  - alert [ref=e632]
+```

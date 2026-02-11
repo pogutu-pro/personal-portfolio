@@ -1,32 +1,95 @@
 @import "tailwindcss";
 @import "./tokens.css";
 
-* {
-  border-color: var(--color-border);
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1, "ss02" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    selection-background-color: var(--color-blue-brand);
+    selection-color: var(--color-white);
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  ::selection {
+    background-color: var(--color-blue-brand);
+    color: var(--color-white);
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-ring);
+  }
 }
 
-html {
-  text-rendering: optimizeLegibility;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .text-responsive {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .outline-text {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    color: transparent;
+  }
+
+  .outline-text-light {
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.05);
+    color: transparent;
+  }
 }
 
-body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  font-feature-settings: "rlig" 1, "calt" 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Precise, professional transitions instead of "vibey" animations */
+.transition-precise {
+  transition: all var(--motion-duration-normal) var(--motion-ease);
 }
 
-::selection {
-  background: color-mix(in oklab, var(--color-foreground) 12%, transparent);
+/* Feature card hover effect */
+.card-hover-effect {
+  transition: transform var(--motion-duration-normal) var(--motion-ease), 
+              border-color var(--motion-duration-normal) var(--motion-ease),
+              box-shadow var(--motion-duration-normal) var(--motion-ease);
 }
 
-/* Accessible focus ring baseline (works well with Tailwind's ring utilities). */
-:focus-visible {
-  outline: none;
+.card-hover-effect:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-border-strong);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Respect reduced motion globally. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

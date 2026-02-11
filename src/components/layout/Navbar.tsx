@@ -3,22 +3,84 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { NAVIGATION, SITE_CONFIG } from "@/lib/constants"
 import { Container } from "./Container"
 import { Button } from "@/components/ui"
+import { cn } from "@/lib/utils"
+import { Menu, X } from "lucide-react"
+
+const menuVariants = {
+  closed: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.2, ease: "easeIn" as const },
+  },
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut" as const,
+      staggerChildren: 0.05,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const itemVariants = {
+  closed: { opacity: 0, x: -10 },
+  open: { opacity: 1, x: 0 },
+}
+
+function NavLink({
+  href,
+  children,
+  isActive,
+  onClick,
+}: {
+  href: string
+  children: string
+  isActive: boolean
+  onClick?: () => void
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className={cn(
+        "relative text-sm font-semibold transition-colors py-2 px-1",
+        isActive ? "text-primary" : "text-gray-500 hover:text-foreground"
+      )}
+      aria-current={isActive ? "true" : undefined}
+    >
+      {children}
+      {isActive && (
+        <motion.span
+          layoutId="nav-underline"
+          className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+        />
+      )}
+    </Link>
+  )
+}
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
-  const [activeSection, setActiveSection] = useState<string>("")
+  const [activeSection, setActiveSection] = useState("")
 
   useEffect(() => {
-    setIsOpen(false)
-  }, [pathname])
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
     if (pathname !== "/") return
-    const sections = ["hero", "work", "about", "lab", "contact"]
+    const sections = ["hero", "work", "about", "lab", "services", "contact"]
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -37,6 +99,14 @@ export function Navbar() {
     return () => observer.disconnect()
   }, [pathname])
 
+  useEffect(() => {
+    if (isOpen) document.body.style.overflow = "hidden"
+    else document.body.style.overflow = ""
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
+
   const isActive = (href: string) => {
     if (pathname !== "/") return false
     const hash = href.replace("/#", "")
@@ -44,96 +114,87 @@ export function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <Container>
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <span className="text-lg font-bold">{SITE_CONFIG.name}</span>
+    <>
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          scrolled
+            ? "h-14 md:h-16 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm"
+            : "h-16 md:h-20 bg-transparent"
+        )}
+      >
+        <Container className="h-full">
+          <div className="flex h-full items-center justify-between">
+            <Link href="/" className="text-base md:text-lg font-black tracking-tight text-foreground transition-opacity hover:opacity-80">
+              {SITE_CONFIG.name.toUpperCase()}
             </Link>
-          </div>
 
-          <div className="hidden md:flex items-center space-x-8">
-            {NAVIGATION.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isActive(item.href) ? "true" : undefined}
-                className={
-                  isActive(item.href)
-                    ? "text-sm font-medium text-foreground transition-colors"
-                    : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground/70"
-                }
-              >
-                {item.title}
-              </Link>
-            ))}
-            <Button asChild size="sm">
-              <Link href="/#contact">Get in touch</Link>
-            </Button>
-          </div>
-
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={isOpen}
-              aria-controls="mobile-nav"
-            >
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </Button>
-          </div>
-        </div>
-
-        {isOpen && (
-          <div id="mobile-nav" className="md:hidden py-4 border-t">
-            <div className="flex flex-col space-y-3">
+            <nav className="hidden md:flex items-center gap-8">
               {NAVIGATION.map((item) => (
-                <Link
+                <NavLink
                   key={item.href}
                   href={item.href}
-                  className={
-                    isActive(item.href)
-                      ? "text-sm font-medium text-foreground"
-                      : "text-sm font-medium text-muted-foreground hover:text-foreground/70"
-                  }
-                  onClick={() => setIsOpen(false)}
+                  isActive={isActive(item.href)}
                 >
                   {item.title}
-                </Link>
+                </NavLink>
               ))}
-              <Button asChild size="sm" className="w-fit">
-                <Link href="/#contact" onClick={() => setIsOpen(false)}>
-                  Get in touch
-                </Link>
+            </nav>
+
+            <div className="hidden md:flex items-center gap-4">
+              <Button variant="primary" size="sm" asChild className="rounded-none px-6 font-bold uppercase tracking-widest text-[10px]">
+                <Link href="/#contact">Collaborate</Link>
               </Button>
             </div>
+
+            <button
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 text-foreground rounded-none hover:bg-gray-100 transition-colors"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
+        </Container>
+      </header>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-[40] bg-white pt-20 flex flex-col md:hidden"
+            variants={menuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+          >
+            <nav className="flex-1 flex flex-col justify-center items-center gap-8 p-6">
+              {NAVIGATION.map((item) => (
+                <motion.div key={item.href} variants={itemVariants}>
+                  <Link
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "text-2xl sm:text-3xl md:text-4xl font-black tracking-tighter uppercase transition-colors block",
+                      isActive(item.href) ? "text-primary" : "text-gray-300 hover:text-foreground"
+                    )}
+                  >
+                    {item.title}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div variants={itemVariants} className="pt-8">
+                <Button variant="primary" size="lg" asChild className="rounded-none w-full px-12 font-bold uppercase tracking-widest">
+                  <Link href="/#contact" onClick={() => setIsOpen(false)}>
+                    Get in Touch
+                  </Link>
+                </Button>
+              </motion.div>
+            </nav>
+          </motion.div>
         )}
-      </Container>
-    </nav>
+      </AnimatePresence>
+    </>
   )
 }

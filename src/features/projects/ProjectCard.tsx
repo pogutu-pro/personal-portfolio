@@ -5,7 +5,6 @@ import { type Project } from "./data"
 import { Badge } from "@/components/ui"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui"
 import { Reveal } from "@/components/motion"
-import { cn } from "@/lib/utils"
 
 interface ProjectCardProps {
   project: Project
@@ -33,10 +32,10 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                 </Badge>
               )}
             </div>
-            <CardDescription className="mt-2">{project.excerpt}</CardDescription>
+            <CardDescription className="mt-2">{project.excerpt ?? project.impact}</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">{project.description}</p>
+            <p className="text-sm text-muted-foreground">{project.description ?? project.impact}</p>
           </CardContent>
           <CardFooter className="flex flex-wrap gap-2">
             {project.tags.slice(0, 4).map((tag) => (

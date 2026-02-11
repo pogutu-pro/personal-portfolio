@@ -48,10 +48,8 @@ export const Slot = forwardRef<HTMLElement, SlotProps & React.HTMLAttributes<HTM
 
     const mergedProps = mergeProps(slotProps as AnyProps, children.props as AnyProps)
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     return cloneElement(children, { ...mergedProps, ref: forwardedRef } as AnyProps)
   }
 )
 
 Slot.displayName = "Slot"
-

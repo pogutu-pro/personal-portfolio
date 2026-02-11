@@ -21,17 +21,31 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_CONFIG.url),
   title: {
     default: SITE_CONFIG.title,
-    template: `%s | ${SITE_CONFIG.name}`,
+    template: `%s | Paul Ogutu`,
   },
   description: SITE_CONFIG.description,
-  metadataBase: new URL(SITE_CONFIG.url),
+  keywords: [
+    "Paul Ogutu",
+    "Product Engineer",
+    "Startup Founder",
+    "Production Systems",
+    "React",
+    "FastAPI",
+    "SaaS Architecture",
+    "Nairobi Startup Ecosystem",
+  ],
+  authors: [{ name: SITE_CONFIG.name }],
+  creator: SITE_CONFIG.name,
   openGraph: {
-    title: SITE_CONFIG.title,
-    description: SITE_CONFIG.description,
+    type: "website",
+    locale: "en_US",
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
+    title: SITE_CONFIG.title,
+    description: SITE_CONFIG.description,
     images: [
       {
         url: SITE_CONFIG.ogImage,
@@ -40,7 +54,6 @@ export const metadata: Metadata = {
         alt: SITE_CONFIG.name,
       },
     ],
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
@@ -70,7 +83,9 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-background text-foreground`}
+      >
         <Script
           id="json-ld"
           type="application/ld+json"
@@ -83,9 +98,9 @@ export default function RootLayout({
           Skip to content
         </a>
         <RouteFocus />
-        <div className="min-h-dvh bg-background text-foreground">
+        <div className="min-h-dvh flex flex-col">
           <Navbar />
-          <main id="main-content" tabIndex={-1} className="outline-none">
+          <main id="main-content" tabIndex={-1} className="flex-grow outline-none">
             {children}
           </main>
           <Footer />
